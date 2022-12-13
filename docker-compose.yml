@@ -1,0 +1,32 @@
+# Menggunakan docker-compose versi 3.7
+version: '3.7'
+
+# Deklarasi Services yang digunakan
+services:
+  # Menjabarkan Service item-app
+  item-app:
+    # Selalu lakukan restart apabila container tidak berjalan
+    restart: always
+    # Deklarasi image yang digunakan
+    image: ghcr.io/takane42/item-app:v1
+    # Port forward dari port 8080 container ke port 80 host
+    ports:
+      - 80:8080
+    # Mendeklarasi bahwa service ini dapat berjalan setelah service item-db telah hidup
+    depends_on:
+      - "item-db"
+
+  # Menjabarkan Service item-app
+  item-db:
+    # Selalu lakukan restart apabila container tidak berjalan
+    restart: always
+    # Deklarasi image yang digunakan
+    image: mongo:3
+    # Melakukan Mapping volume mana yang digunakan dan mount ke directory apa dalam container
+    volumes:
+      - app-db:/data/db
+
+# Mendeklarasikan volume apa saja yang digunakan pada stack compose ini
+volumes:
+  # Volume yang digunakan pada compose
+  app-db:
