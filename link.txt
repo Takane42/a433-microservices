@@ -1,3 +1,3 @@
-Github Repository : https://github.com/Takane42/a433-microservices
+Github Repository : https://github.com/Takane42/a433-microservices/tree/proyek-pertama
 
 Github Package : https://github.com/users/Takane42/packages/container/package/item-app
