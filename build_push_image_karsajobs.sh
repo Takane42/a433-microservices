@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Yes
 # Buat Image docker dari Dockerfile yang berada pada directory yang sama
 docker build -t ghcr.io/takane42/karsajobs:latest  .
 
