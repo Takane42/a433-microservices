@@ -18,7 +18,7 @@ jobs:
       
       - name: test-app
         uses: actions/setup-go@v3
-        run: go test -v -short --count=1 $(go list ./...)
+      - run: go test -v -short --count=1 $(go list ./...)
 
           #      - name: Setup Docker Buildx
           #        uses: docker/setup-buildx-action@v2
