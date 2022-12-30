@@ -13,8 +13,8 @@ jobs:
 
       - name: lint-dockerfile
         uses: hadolint/hadolint-action@v2.1.0
-          with:
-            dockerfile: Dockerfile
+        with:
+          dockerfile: Dockerfile
       
       - name: test-app
         uses: actions/setup-go@v3
