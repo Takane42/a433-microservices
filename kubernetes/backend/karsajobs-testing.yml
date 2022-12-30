@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karsajobs-be
+  labels:
+    app: backend
+    env: testing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        env: testing
+    spec:
+      containers:
+      - name: karsajobs-be
+        image: ghcr.io/takane42/karsajobs:latest
+        command: ["/bin/sh"]
+        ports:
+          - containerPort: 8080
+        env:
+          - name:  MONGO_USER
+            valueFrom:
+              secretKeyRef:
+                name:  mongo-db-secret
+                key:  MONGO_ROOT_USERNAME
+          - name:  MONGO_PASS
+            valueFrom:
+              secretKeyRef:
+                name:  mongo-db-secret
+                key:  MONGO_ROOT_PASSWORD
+          - name: MONGO_HOST
+            value: $(MONGO_DB_SERVICE_HOST)
+          - name: APP_PORT
+            value: "8080"

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-db-configmap
+  labels:
+    app: database
+    env: production
+data:
+  mongo.conf: |
+    storage:
+      dbPath: /data/db
